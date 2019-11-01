@@ -1,31 +1,42 @@
 extends Node2D
 
-# full : 4/4
-# quarter : 1/4
-# eight : .5/4
-
-# 1s == 60bpm
-
-onready var metronome01 := $metronome01
-onready var sprite := $sprite
-
 export var bpm := 120
 
 func _ready():
-	$Timer.wait_time = bpm2sec(bpm)
-	$Timer.start()
+	$fullMeasure.visible = false
+	$quarterMeasure.visible = false
+	$eightMeasure.visible = false
 	
-	sprite.visible = false
-	sprite.position = get_viewport_rect().size/2
-
-func _on_Timer_timeout():
-	sprite.visible = !sprite.visible
-	metronome01.play()
-	$Timer.start()
-
-func get_sprite_center(spr: Sprite) -> Vector2:
-	var spr_center = spr.get_rect().size
-	return spr_center/2
+	$fullTimer.wait_time = bpm2sec(bpm / 4.0)
+	$quartTimer.wait_time = bpm2sec(bpm)
+	$eightTimer.wait_time = bpm2sec(bpm * 2.0)
+	
+	$fullTimer.start()
+	$quartTimer.start()
+	$eightTimer.start()
 
 func bpm2sec(tempo) -> float:
 	return 60.0/tempo
+
+func _on_fullTimer_timeout():
+	$metronome03.play()
+	$fullMeasure.visible = true
+	$fullTimer.start()
+	$fullMeasureDisplay.start()
+
+
+func _on_quartTimer_timeout():
+	$metronome01.play()
+	$quarterMeasure.visible = !$quarterMeasure.visible
+	$quartTimer.start()
+
+
+func _on_eightTimer_timeout():
+	$metronome02.volume_db = -10
+	$metronome02.play()
+	$eightMeasure.visible = !$eightMeasure.visible
+	$eightTimer.start()
+
+
+func _on_fullMeasureDisplay_timeout():
+	$fullMeasure.visible = false
