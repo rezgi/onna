@@ -1,59 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sounds/metronome01.wav" type="AudioStream" id=1]
 [ext_resource path="res://Beat.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://sounds/metronome02.wav" type="AudioStream" id=4]
 [ext_resource path="res://sounds/laser.wav" type="AudioStream" id=5]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-void fragment(){
-	COLOR = vec4(1,1,1,1);
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-
-void fragment(){
-	COLOR = vec4(0,1,0,1);
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 4 )
-
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-void fragment(){
-	COLOR = vec4(0,0,1,1);
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-
 [node name="Beat" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="BG" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1080.0
-margin_bottom = 1920.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="metronome01" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 
 [node name="metronome02" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="metronome03" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -65,27 +25,32 @@ volume_db = -6.0
 
 [node name="eightTimer" type="Timer" parent="."]
 
-[node name="fullMeasureDisplay" type="Timer" parent="."]
-wait_time = 0.2
+[node name="labelFull" type="Label" parent="."]
+margin_left = 384.0
+margin_top = 384.0
+margin_right = 424.0
+margin_bottom = 398.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="fullMeasure" type="Sprite" parent="."]
-material = SubResource( 2 )
-position = Vector2( 611.2, 864 )
-scale = Vector2( 0.4, 1 )
-texture = ExtResource( 3 )
+[node name="labelQuart" type="Label" parent="."]
+margin_left = 512.0
+margin_top = 384.0
+margin_right = 552.0
+margin_bottom = 398.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="quarterMeasure" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( 515.2, 864 )
-scale = Vector2( 0.2, 1 )
-texture = ExtResource( 3 )
-
-[node name="eightMeasure" type="Sprite" parent="."]
-material = SubResource( 6 )
-position = Vector2( 419.2, 864 )
-scale = Vector2( 0.1, 1 )
-texture = ExtResource( 3 )
+[node name="labelEight" type="Label" parent="."]
+margin_left = 640.0
+margin_top = 384.0
+margin_right = 680.0
+margin_bottom = 398.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="fullTimer" to="." method="_on_fullTimer_timeout"]
 [connection signal="timeout" from="quartTimer" to="." method="_on_quartTimer_timeout"]
 [connection signal="timeout" from="eightTimer" to="." method="_on_eightTimer_timeout"]
-[connection signal="timeout" from="fullMeasureDisplay" to="." method="_on_fullMeasureDisplay_timeout"]
