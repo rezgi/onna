@@ -17,11 +17,16 @@ _global_script_class_icons={
 
 config/name="09 - Onna"
 config/description="First game with Godot"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [audio]
 
 output_latency=10
+
+[debug]
+
+gdscript/warnings/unused_variable=false
 
 [display]
 
