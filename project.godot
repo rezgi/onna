@@ -19,6 +19,10 @@ config/name="09 - Onna"
 config/description="First game with Godot"
 config/icon="res://icon.png"
 
+[audio]
+
+output_latency=10
+
 [display]
 
 window/size/width=1080

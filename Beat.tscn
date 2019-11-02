@@ -7,50 +7,18 @@
 
 [node name="Beat" type="Node2D"]
 script = ExtResource( 2 )
+bpm = 160
 
 [node name="metronome01" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 
 [node name="metronome02" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -16.0
 
 [node name="metronome03" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -6.0
+volume_db = -10.0
 
-[node name="fullTimer" type="Timer" parent="."]
-
-[node name="quartTimer" type="Timer" parent="."]
-
-[node name="eightTimer" type="Timer" parent="."]
-
-[node name="labelFull" type="Label" parent="."]
-margin_left = 384.0
-margin_top = 384.0
-margin_right = 424.0
-margin_bottom = 398.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="labelQuart" type="Label" parent="."]
-margin_left = 512.0
-margin_top = 384.0
-margin_right = 552.0
-margin_bottom = 398.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="labelEight" type="Label" parent="."]
-margin_left = 640.0
-margin_top = 384.0
-margin_right = 680.0
-margin_bottom = 398.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="timeout" from="fullTimer" to="." method="_on_fullTimer_timeout"]
-[connection signal="timeout" from="quartTimer" to="." method="_on_quartTimer_timeout"]
-[connection signal="timeout" from="eightTimer" to="." method="_on_eightTimer_timeout"]
+[node name="mainTempo" type="Timer" parent="."]
+[connection signal="timeout" from="mainTempo" to="." method="_on_mainTempo_timeout"]
