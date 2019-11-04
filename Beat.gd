@@ -10,7 +10,6 @@ Sound can be activated for debugging in inspector.
 signal tempo_on
 
 export var bpm := 120
-# warning-ignore:unused_class_variable
 export var sound_debug := false
 
 var count_eight := 0
@@ -40,7 +39,6 @@ func _on_mainTempo_timeout():
 		$metronome02.play() if sound_debug else ""
 	
 	emit_signal("tempo_on", tempo)
-#	print(tempo)
 	tempo.eight += .5
 	count_eight += 1
 	$mainTempo.start()
