@@ -3,10 +3,10 @@ A first try in making a rythmic platform game in Godot
 
 ## ToDo
 
-- Make metronome _* done, and solved latency bug by using 1 timer instead of 3
-- Metronome sends tempo data out _* done
-- player receives tempo data _* done
-- player moves sync to tempo _* done, parameters : direction, distance and on which beat move
+- Make metronome _* done, and solved latency bug by using 1 timer instead of 3_
+- Metronome sends tempo data out _* done_
+- player receives tempo data _* done_
+- player moves sync to tempo _* done, parameters : direction, distance and on which beat move_
 - implement all eight beats scenario
 - have speed adapt to selected beat, or make it custom for each element
 - make a grid
