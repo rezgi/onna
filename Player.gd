@@ -9,14 +9,14 @@ export var distance := 64
 export var direction := Vector2(0, 1)
 export (bool) var move_on_measure = true
 export (bool) var move_on_quart = false
-# warning-ignore:unused_class_variable
+export (bool) var move_on_syncope = false
 export (bool) var move_on_eight = false
+export (float, 1) var SPEED = 0.2
 
 var target = Vector2.ZERO
 var move_vector := Vector2.ZERO
 var measure_count := 0
 var has_moved := false
-const SPEED := 0.2
 
 func _ready():
 	position = get_viewport_rect().size / 2
@@ -24,7 +24,6 @@ func _ready():
 func _physics_process(delta):
 	if target != Vector2.ZERO:
 		move_vector = ((target - position) * SPEED) / delta
-# warning-ignore:return_value_discarded
 		move_and_collide(move_vector * delta)
 
 func beat_signal(tempo):
@@ -32,8 +31,12 @@ func beat_signal(tempo):
 		count_full_measure(tempo)
 	elif move_on_quart:
 		count_quart_measure(tempo)
-	else:
+	elif move_on_syncope:
+		count_syncope_measure(tempo)
+	elif move_on_eight:
 		count_eight_measure(tempo)
+	else:
+		return
 
 func compute_target():
 	var new_distance
@@ -61,15 +64,19 @@ func count_full_measure(tempo):
 		target = Vector2.ZERO
 
 func count_quart_measure(tempo):
-	if tempo.quart == tempo.eight:
+	if !tempo.syncope:
+		has_moved = !has_moved
+		compute_target()
+	else:
+		target = Vector2.ZERO
+
+func count_syncope_measure(tempo):
+	if tempo.syncope:
 		has_moved = !has_moved
 		compute_target()
 	else:
 		target = Vector2.ZERO
 
 func count_eight_measure(tempo):
-	if tempo.quart != tempo.eight:
-		has_moved = !has_moved
-		compute_target()
-	else:
-		target = Vector2.ZERO
+	has_moved = !has_moved
+	compute_target()

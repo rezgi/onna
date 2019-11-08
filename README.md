@@ -7,9 +7,9 @@ A first try in making a rythmic platform game in Godot
 - Metronome sends tempo data out _* done_
 - player receives tempo data _* done_
 - player moves sync to tempo _* done, parameters : direction, distance and on which beat move_
-- implement all eight beats scenario
-- have speed adapt to selected beat, or make it custom for each element
-- make a grid
+- implement all eight beats scenario _* done, refactoring may be needed later_
+- have speed adapt to selected beat, or make it custom for each element _* done, exported in inspector for now_
+- make a grid * on it, need to learn draw() and update()
 - make different platform elements & behaviors
 - make player & input (keyboard UP/LEFT/RIGHT/DOWN)
 - add physics : stay on block, jump and fall, slope up and down
@@ -20,7 +20,7 @@ A first try in making a rythmic platform game in Godot
 
 ## ToCheck
 
-- make visual tool for selecting beats
+- make visual tool for selecting beats and direction / distance / speed
 - make more modular behaviors ? ex: move 1, wait 1, back 1
 - keyboard input for the time being, make swipe after
 - down direction for maybe player mechanic power-up : can stay in the air for multiple beats, choose when down

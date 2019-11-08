@@ -11,3 +11,6 @@ script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 540, 960 )
+distance = 256
+move_on_measure = false
+move_on_syncope = true
