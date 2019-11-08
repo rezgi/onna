@@ -19,11 +19,13 @@ var measure_count := 0
 var has_moved := false
 
 func _ready():
-	position = get_viewport_rect().size / 2
+#	position = get_viewport_rect().size / 2
+	position = Vector2(512,512)
 
 func _physics_process(delta):
 	if target != Vector2.ZERO:
 		move_vector = ((target - position) * SPEED) / delta
+		print(move_vector)
 		move_and_collide(move_vector * delta)
 
 func beat_signal(tempo):

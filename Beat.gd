@@ -42,8 +42,7 @@ func _on_mainTempo_timeout():
 		$metronome02.play() if sound_debug else ""
 	
 	emit_signal("tempo_on", tempo)
+	
 	tempo.eight = counter + 1
-	print(tempo)
-#	tempo.syncope += .5
 	counter += 1
 	$mainTempo.start()
