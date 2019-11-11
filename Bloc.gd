@@ -1,8 +1,11 @@
 extends StaticBody2D
 
 """
-Moves character according to tempo and direction.
-In the future have more modular movement loops, ex: move then stay still one beat, then back / move x then y on next beat
+Moves bloc according to tempo and direction.
+- debug the imperfect movement, needs to reach previous position
+- look for animation interpolation : time animation curve before reaching goal position
+- have more modular movement loops, ex: move then stay still one beat, then back / move x then y on next beat
+- better collisions
 """
 
 export var distance := 64
