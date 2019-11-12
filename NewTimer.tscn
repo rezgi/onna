@@ -7,6 +7,7 @@
 
 [node name="NewTimer" type="Node2D"]
 script = ExtResource( 3 )
+measure_sound = true
 
 [node name="StartTempo" type="Button" parent="."]
 margin_left = 480.0
@@ -32,7 +33,6 @@ __meta__ = {
 
 [node name="highClic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -10.0
 
 [node name="lowClic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
