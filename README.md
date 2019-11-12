@@ -3,7 +3,7 @@ A first try in making a rythmic platform game in Godot
 
 ## ToDo
 
-- better tempo algorythm, data structure and bgm sync _* done, still debug sound and signature options WIP_
+- better tempo algorythm, data structure and bgm sync _* done but bgm loop bug._
 - blocs movements not pixel-perfect, to solve
 - how to have procedural animations, ex: speed curve before reaching beat hit, can move on beat or *reach* beat
 - platform physics : player sticks to it
