@@ -3,7 +3,8 @@ extends Node2D
 """
 A new and cleaner tempo algorythm. Sends an updated dictionary on each beat.
 
-- BGM doesn't loop in time, because of sound file or code ? To check.
+- BGM loop not perfect, check sound file.
+- Bug on first full_measure sound when ternary. To find.
 """
 
 signal tempo_on
@@ -14,9 +15,7 @@ export var all_beats_sound := true
 export var measure_sound := false
 export var quart_sound := false
 export var syncope_sound := false
-
-enum signature_enum {Binary, Ternary}
-export (signature_enum) var signature_type
+export (int, "Binary", "Ternary") var signature_type
 
 onready var high_clic := $highClic
 onready var low_clic := $lowClic
@@ -26,9 +25,11 @@ onready var bgm := $BGM
 var counter := 1.0
 var signature := 0.0
 var tempo := {
+	"bpm": null,
 	"is_full": false,
 	"is_quart": false,
 	"is_syncope": false,
+	"is_eight": false,
 	"measure_count": 1,
 	"quart_count": 1,
 	"syncope_count": 1.5,
@@ -54,11 +55,13 @@ func _on_Timer_timeout() -> void:
 		tempo.is_syncope = true
 		tempo.syncope_count = counter
 		if syncope_sound: play_syncope()
+#		print("syncope : ", counter)
 	else:
 		tempo.is_quart = true
 		tempo.is_syncope = false
 		tempo.quart_count = counter
 		if quart_sound: play_quart()
+#		print("quart : ", counter)
 	
 #	print(tempo)
 	emit_signal("tempo_on", tempo)
@@ -67,6 +70,8 @@ func _on_Timer_timeout() -> void:
 func _on_StopTempo_pressed() -> void:
 	timer.stop()
 	if debug_bgm: bgm.stop()
+	reset_tempo_dict()
+	counter = 1.0
 
 func start_timer() -> void:
 	timer.wait_time = 60.0 / (bpm * 2)
@@ -77,16 +82,28 @@ func start_timer() -> void:
 	if debug_bgm: bgm.play()
 	
 	signature = 4.5 if signature_type == 0 else 3.5
+	tempo.bpm = bpm
 	tempo.is_quart = true
-	emit_signal("tempo_on", tempo)
-	
+	tempo.is_eight= true
 #	print(tempo)
+	emit_signal("tempo_on", tempo)
 
 func reset_measure() -> void:
 	counter = 1
 	tempo.beat_count = 1
 	tempo.measure_count += 1
 	tempo.is_full = true
+
+func reset_tempo_dict() -> void:
+	tempo.bpm = null
+	tempo.is_full = false
+	tempo.is_quart = false
+	tempo.is_syncope = false
+	tempo.is_eight= false
+	tempo.measure_count = 1
+	tempo.quart_count = 1
+	tempo.syncope_count = 1.5
+	tempo.beat_count = 1
 
 func play_beat() -> void:
 	if all_beats_sound: $highClic.volume_db = -20
@@ -97,7 +114,7 @@ func play_measure() -> void:
 	$lowClic.play()
 
 func play_quart() -> void:
-	if quart_sound: $highClic.volume_db = -5
+	if quart_sound: $highClic.volume_db = -10
 	$highClic.play()
 
 func play_syncope() -> void:
