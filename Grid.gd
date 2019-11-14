@@ -15,10 +15,10 @@ export (Color) var subdivision_color setget _set_subdivision_color
 
 var screen_size := Vector2.ZERO
 
-func _ready():
+func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
-func _draw():
+func _draw() -> void:
 	for i in range(ceil(screen_size.y / cell_size)):		# Draw vertical lines
 		draw_line(Vector2(0, i * cell_size), Vector2(screen_size.x, i * cell_size), line_color, line_thickness)
 	for i in range(ceil(screen_size.x / cell_size)):		# Draw horizontal lines
@@ -31,30 +31,30 @@ func _draw():
 		for i in range(ceil(screen_size.x / (cell_size * subdivision_steps))):		# Draw horizontal subdivision lines
 			draw_line(Vector2(i * new_cell_size, 0), Vector2(i * new_cell_size, screen_size.y), subdivision_color, subdivision_thickness)
 
-func _set_cell_size(value):
+func _set_cell_size(value) -> void:
 	cell_size = value
 	update()
 
-func _set_color(value):
+func _set_color(value) -> void:
 	line_color = value
 	update()
 	
-func _set_line_thickness(value):
+func _set_line_thickness(value) -> void:
 	line_thickness = value
 	update()
 
-func _set_cell_subdivision(value):
+func _set_cell_subdivision(value) -> void:
 	cell_subdivision = value
 	update()
 
-func _set_subdivision_thickness(value):
+func _set_subdivision_thickness(value) -> void:
 	subdivision_thickness = value
 	update()
 
-func _set_subdivision_color(value):
+func _set_subdivision_color(value) -> void:
 	subdivision_color = value
 	update()
 
-func _set_subdivision_steps(value):
+func _set_subdivision_steps(value) -> void:
 	subdivision_steps = value
 	update()
