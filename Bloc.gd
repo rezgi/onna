@@ -1,84 +1,56 @@
 extends StaticBody2D
 
 """
-Moves bloc according to tempo and direction.
-- debug the imperfect movement, needs to reach previous position
-- look for animation interpolation : time animation curve before reaching goal position
-- have more modular movement loops, ex: move then stay still one beat, then back / move x then y on next beat
-- better collisions
+A static bloc that moves according to tempo and options.
+
+- Add back & forth option
+- Add custom behavior, ex : move forward for 2 measures / wait 1 measure / move backward : 2 measures
+- Add custom directions, ex : move 64 Y for 2 quart / move 64 X for 1 quart / move -64 Y for 2 quart / move -64 X for 1 quart
+- Experiment with tween types
+- Maybe invert directions on collision ?
 """
 
-export var distance := 64
-export var direction := Vector2(0, 1)
-export (bool) var move_on_measure = true
-export (bool) var move_on_quart = false
-export (bool) var move_on_syncope = false
-export (bool) var move_on_eight = false
-export (float, 1) var SPEED = 0.2
+export var direction := Vector2.ZERO
+export (int, "measure", "quart", "syncope", "eight") var move_on
+export (int, "measure", "quart", "eight") var tween_duration
 
-var target = Vector2.ZERO
-var move_vector := Vector2.ZERO
-var measure_count := 0
-var has_moved := false
+onready var tween := $Tween
 
-func _physics_process(delta):
-	if target != Vector2.ZERO:
-		move_vector = ((target - position) * SPEED) / delta
-		print(move_vector)
-		position += move_vector * delta
-#		move_and_collide(move_vector * delta)
+func tempo_signal(tempo) -> void:
+	match move_on:
+		0:
+			if tempo.is_full:
+				move(direction, tween_duration(tempo.bpm))
+		1:
+			if tempo.is_quart:
+				move(direction, tween_duration(tempo.bpm))
+		2:
+			if tempo.is_syncope:
+				move(direction, tween_duration(tempo.bpm))
+		3:
+			if tempo.is_eight:
+				move(direction, tween_duration(tempo.bpm))
 
-func beat_signal(tempo):
-	if move_on_measure:
-		count_full_measure(tempo)
-	elif move_on_quart:
-		count_quart_measure(tempo)
-	elif move_on_syncope:
-		count_syncope_measure(tempo)
-	elif move_on_eight:
-		count_eight_measure(tempo)
-	else:
-		return
+func move(_direction, _duration) -> void:
+	tween.interpolate_property(
+		self, 
+		'position',
+		self.position, 
+		self.position + _direction, 
+		_duration, 
+		Tween.TRANS_QUINT, 
+		Tween.EASE_OUT
+		)
+	tween.start()
 
-func compute_target():
-	var new_distance
-	if has_moved:
-		new_distance = -distance
-	else:
-		new_distance = distance
+func tween_duration(bpm) -> float:
+	var tempo_duration := 0.0
+	match tween_duration:
+		0:
+			tempo_duration = 60.0 / (bpm / 2)
+		1:
+			tempo_duration = 60.0 / (bpm)
+		2:
+			tempo_duration = 60.0 / (bpm * 2)
+	return tempo_duration
 
-	if direction.x != 0:
-		target.x = position.x + (new_distance * direction.x)
-	else:
-		target.x = position.x
-	if direction.y != 0:
-		target.y = position.y + (new_distance * direction.y)
-	else:
-		target.y = position.y
-	return target
-
-func count_full_measure(tempo):
-	if measure_count != tempo.full:
-		measure_count = tempo.full
-		has_moved = !has_moved
-		compute_target()
-	else:
-		target = Vector2.ZERO
-
-func count_quart_measure(tempo):
-	if !tempo.syncope:
-		has_moved = !has_moved
-		compute_target()
-	else:
-		target = Vector2.ZERO
-
-func count_syncope_measure(tempo):
-	if tempo.syncope:
-		has_moved = !has_moved
-		compute_target()
-	else:
-		target = Vector2.ZERO
-
-func count_eight_measure(tempo):
-	has_moved = !has_moved
-	compute_target()
