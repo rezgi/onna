@@ -4,4 +4,7 @@
 
 [node name="Grid" type="Node2D"]
 script = ExtResource( 1 )
-line_color = Color( 1, 1, 1, 0.113725 )
+line_color = Color( 1, 1, 1, 0.0784314 )
+cell_subdivision = true
+subdivision_thickness = 1
+subdivision_color = Color( 1, 1, 1, 0.117647 )
