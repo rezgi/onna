@@ -1,17 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Beat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tempo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Bloc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Grid.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Bloc.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1080.0
-margin_bottom = 1920.0
+margin_right = 1920.0
+margin_bottom = 1088.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,72 +18,16 @@ __meta__ = {
 
 [node name="Grid" parent="." instance=ExtResource( 4 )]
 cell_size = 32
-line_color = Color( 1, 1, 1, 0.117647 )
-line_width = 1
-cell_subdivision = true
+line_thickness = 1
+line_color = Color( 1, 1, 1, 0.0392157 )
+subdivision_steps = 4
+subdivision_color = Color( 1, 1, 1, 0.0784314 )
 
-[node name="Beat" parent="." instance=ExtResource( 2 )]
-sound_debug = false
+[node name="Tempo" parent="." instance=ExtResource( 2 )]
+syncope_sound = true
 
-[node name="BlocsContainer" type="Node" parent="."]
-
-[node name="Bloc01" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 32, 1536 )
-
-[node name="Bloc02" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 160, 1472 )
-direction = Vector2( 1, 0 )
-
-[node name="Bloc03" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 288, 1280 )
-direction = Vector2( 1, 0 )
-move_on_measure = false
-move_on_syncope = true
-
-[node name="Bloc04" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 224, 1408 )
-move_on_syncope = true
-
-[node name="Bloc08" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 288, 1792 )
-
-[node name="Bloc07" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 352, 1792 )
-
-[node name="Bloc06" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 480, 1792 )
-
-[node name="Bloc05" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 416, 1792 )
-
-[node name="Bloc12" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 544, 1792 )
-
-[node name="Bloc11" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 608, 1792 )
-
-[node name="Bloc10" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 736, 1792 )
-
-[node name="Bloc09" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 672, 1792 )
-
-[node name="Bloc16" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 800, 1792 )
-
-[node name="Bloc15" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 864, 1792 )
-
-[node name="Bloc13" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 928, 1792 )
-
-[node name="Bloc14" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 992, 1792 )
-
-[node name="Bloc17" parent="BlocsContainer" instance=ExtResource( 5 )]
-position = Vector2( 1056, 1792 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 768 )
-scale = Vector2( 0.6, 1 )
-speed = 128
+[node name="Bloc" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 768 )
+direction = Vector2( 64, -64 )
+move_on = 1
+tween_duration = 1

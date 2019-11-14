@@ -3,12 +3,14 @@ A first try in making a rythmic platform game in Godot
 
 ## ToDo
 
-- better tempo algorythm, data structure and bgm sync _* done but bgm loop bug._
-- blocs movements not pixel-perfect, to solve
-- how to have procedural animations, ex: speed curve before reaching beat hit, can move on beat or *reach* beat
-- platform physics : player sticks to it
+- better tempo algorythm, data structure and bgm sync _* done_
+- blocs movements not pixel-perfect, to solve _* solved thanks to Tweens_
+- how to have 'reaching' animations, ex: speed curve before reaching beat hit, can move on beat or *reach* beat _* Getting closer, can trigger tween 1 quart before for example and using Expo curve for example_
 - more modular bloc behaviors. ex: move 1, wait 1, back 1
+- make different bloc behaviours for playtest
+- make player that moves like blocs but on user input
 - check if player movement/input is in sync with tempo
+- platform physics : player sticks to it
 - test game mechanic
 
 ---
@@ -36,7 +38,11 @@ A first try in making a rythmic platform game in Godot
 
 ## ChangeLog
 
-### v0.1 :
+### v0.2 // Refined tempo and movement mechanics :
+
+- WIP
+
+### v0.1 // First tests for main tempo and movement mechanics :
 
 - Make metronome _* done, and solved latency bug by using 1 timer instead of 3_
 - Metronome sends tempo data out _* done_
