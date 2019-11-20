@@ -1,10 +1,14 @@
 extends Node2D
+class_name Tempo, "res://ui/tempo.png"
 
 """
 A new and cleaner tempo algorythm. Sends an updated dictionary on each beat.
 
 - BGM loop not perfect, check sound file.
 - Bug on first full_measure sound when ternary. To find.
+- If clic again on start, bug. need to reset the counter in this case
+- Stop button in Jumpy scene acts weird, clic area displaced
+- Refactor sound playing in a single function with condition check
 """
 
 signal tempo_on
@@ -68,10 +72,7 @@ func _on_Timer_timeout() -> void:
 	timer.start()
 
 func _on_StopTempo_pressed() -> void:
-	timer.stop()
-	if debug_bgm: bgm.stop()
-	reset_tempo_dict()
-	counter = 1.0
+	stop_timer()
 
 func start_timer() -> void:
 	timer.wait_time = 60.0 / (bpm * 2)
@@ -87,6 +88,12 @@ func start_timer() -> void:
 	tempo.is_eight= true
 #	print(tempo)
 	emit_signal("tempo_on", tempo)
+
+func stop_timer() -> void:
+	timer.stop()
+	if debug_bgm: bgm.stop()
+	reset_tempo_dict()
+	counter = 1.0
 
 func reset_measure() -> void:
 	counter = 1
