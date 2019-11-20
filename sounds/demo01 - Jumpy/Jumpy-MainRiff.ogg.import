@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jumpy-MainRiff.ogg-de07f407260758d68c482f8ddb152e6a.oggstr"
+
+[deps]
+
+source_file="res://sounds/demo01 - Jumpy/Jumpy-MainRiff.ogg"
+dest_files=[ "res://.import/Jumpy-MainRiff.ogg-de07f407260758d68c482f8ddb152e6a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

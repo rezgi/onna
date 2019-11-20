@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jumpy-Melody.ogg-56aafa388bdaaa970f33d05079b1c8a2.oggstr"
+
+[deps]
+
+source_file="res://sounds/demo01 - Jumpy/Jumpy-Melody.ogg"
+dest_files=[ "res://.import/Jumpy-Melody.ogg-56aafa388bdaaa970f33d05079b1c8a2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
