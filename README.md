@@ -1,46 +1,50 @@
 # onna
 A first try in making a rythmic platform game in Godot
 
-## ToDo
 
-- better tempo algorythm, data structure and bgm sync _* done_
-- blocs movements not pixel-perfect, to solve _* solved thanks to Tweens_
-- how to have 'reaching' animations, ex: speed curve before reaching beat hit, can move on beat or *reach* beat _* Getting closer, can trigger tween 1 quart before for example and using Expo curve for example_
-- more modular bloc behaviors. ex: move 1, wait 1, back 1
+## ToDo v0.3
+
+- make demo riff (150bpm) _* done, trouble with bass export_
+- set the music and tempo in project
+- make filled blocs with collisionShape
+- experiment movement with animationPlayer
+- check how to apply tempo data to animationPlayer animation
+- use animationPlayer for bloc behaviors
 - make different bloc behaviours for playtest
-- make player that moves like blocs but on user input
-- check if player movement/input is in sync with tempo
-- platform physics : player sticks to it
+- try player stick to platform (move_and_slide_with_snap)
+- try player that moves like blocs but on user input
+- try player movement/input in sync with tempo
 - test game mechanic
 
 ---
 
 ## ToCheck
 
-- make library of procedural animation curves (quint, quart and such) to apply to different behaviors
-- make enemies
+- may need to make tempo with 16th
+- would be nice to have a "1,2,3,4!" when touching an area, so that player analyzes level rythm first
+- add a full riff counter to trigger events that span on mulitple measures
+- make tempo global, see how to connect it to any element
+- have a midi parsing and then syncing or selecting trigger events on them
 - visual tool for selecting beats and direction / distance / speed
-- add physics : stay on block, jump and fall, slope up and down
-- better behaving debug grid (subdivisions)
+- separate X and Y line steps for grid subdivisions
 - keyboard input for the time being, make swipe after
-- allow multiple measures to be used for movements, allow bloc to move later on the measure, to make in bloc and enemy behaviors
 - add icons to Beat and Grid
-- find better game title, probably should wait until art and overall feel has progressed
-
----
-
-## Ideas
-
-- down direction for maybe player mechanic power-up : can stay in the air for multiple beats, choose when down
-- would be nice to have a "1,2,3,4!")
+- try player stick to ceilings 
 
 ---
 
 ## ChangeLog
 
-### v0.2 // Refined tempo and movement mechanics :
+### v0.3 // Gameplay test
 
 - WIP
+
+### v0.2 // Refined tempo and movement mechanics :
+
+- better tempo algorythm, data structure and bgm sync _* done, make it global_
+- blocs movements not pixel-perfect, to solve _* solved thanks to Tweens_
+- how to have 'reaching' animations, ex: speed curve before reaching beat hit, can move on beat or *reach* beat _* Getting closer, can trigger tween 1 quart before for example and using Expo curve for example_
+- more modular bloc behaviors. ex: move 1, wait 1, back 1 _use animationPlayer_
 
 ### v0.1 // First tests for main tempo and movement mechanics :
 
