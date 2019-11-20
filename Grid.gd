@@ -1,5 +1,5 @@
-tool
 extends Node2D
+class_name Grid, "res://ui/grid.png"
 
 """
 Debug grid with cell_size, width, color and sub-divisions options.
