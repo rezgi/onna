@@ -17,10 +17,7 @@ __meta__ = {
 }
 
 [node name="Grid" parent="." instance=ExtResource( 4 )]
-cell_size = 32
-line_thickness = 1
 line_color = Color( 1, 1, 1, 0.0392157 )
-subdivision_steps = 4
 subdivision_color = Color( 1, 1, 1, 0.0784314 )
 
 [node name="Tempo" parent="." instance=ExtResource( 2 )]

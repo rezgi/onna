@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://Grid.gd"
+}, {
+"base": "Node2D",
+"class": "Tempo",
+"language": "GDScript",
+"path": "res://Tempo.gd"
+} ]
 _global_script_class_icons={
-
+"Grid": "res://ui/grid.png",
+"Tempo": "res://ui/tempo.png"
 }
 
 [application]
@@ -33,6 +44,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [layer_names]
 
