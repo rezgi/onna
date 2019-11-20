@@ -9,19 +9,16 @@ A first try in making a rythmic platform game in Godot
 - add icons to Beat and Grid _* done_
 - add a full riff counter to trigger events that span on multiple measures _* done, not very elegant, maybe add it into Tempo class_
 - set the music and tempo in project _* done, triggered with buttons and layers wait for next measure to start._
-
-
+-
 - make filled blocs with collisionShape
 - make blocs movements triggered by tempo data
 - or make areas to reach to trigger new layers of music and level (unlocking bass for example, which adds other blocs that allow to progress further)
-
-
+-
 - experiment movement with animationPlayer
 - check how to apply tempo data to animationPlayer animation
 - use animationPlayer for bloc behaviors
 - make different bloc behaviours for playtest
-
-
+-
 - try player stick to platform (move_and_slide_with_snap)
 - try player stick to ceilings 
 - try player that moves like blocs but on user input
