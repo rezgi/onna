@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 21.4662, 32 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.2, 0.792593, 1 )
+colors = PoolColorArray( 0.793074, 0.149002, 0.847656, 1, 1, 1, 1, 1, 1, 1, 1, 0.164706 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+gravity = Vector3( 0, -100, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+scale = 6.0
+scale_random = 1.0
+color_ramp = SubResource( 3 )
+
+[node name="TriggerBeat01" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -34 )
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 32
+speed_scale = 2.0
+explosiveness = 0.7
+process_material = SubResource( 4 )
