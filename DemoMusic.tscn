@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-Bass.ogg" type="AudioStream" id=1]
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-Beat01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-MainRiff.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-Melody.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-Beat02.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/demo01 - Jumpy/Jumpy-Beat03.ogg" type="AudioStream" id=8]
+
+[node name="DemoMusic" type="Node"]
+
+[node name="MainRiff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Beat01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Beat02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Beat03" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Melody" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
