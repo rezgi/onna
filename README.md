@@ -10,19 +10,16 @@ A first try in making a rythmic platform game in Godot
 - add a full riff counter to trigger events that span on multiple measures _* done, not very elegant, maybe add it into Tempo class_
 - set the music and tempo in project _* done, triggered with buttons and layers wait for next measure to start._
 -
-- make filled blocs with collisionShape
-- make blocs movements triggered by tempo data
-- or make areas to reach to trigger new layers of music and level (unlocking bass for example, which adds other blocs that allow to progress further)
+- make filled blocs with collisionShape _* done with custom parameters but doesn't work when duplicating it to another scene_
+- make blocs movements triggered by tempo data _ *done, need refactoring_
+- make areas to reach to trigger new layers of music and level _* done_
 -
-- experiment movement with animationPlayer
+- experiment more detailed bloc movements with animationPlayer
+- need a reach parameter
 - check how to apply tempo data to animationPlayer animation
-- use animationPlayer for bloc behaviors
-- make different bloc behaviours for playtest
+- make different bloc behaviours
 -
-- try player stick to platform (move_and_slide_with_snap)
-- try player stick to ceilings 
-- try player that moves like blocs but on user input
-- try player movement/input in sync with tempo
+- try player stick to platform (move_and_slide_with_snap) _* WIP, doesn't work_
 - test game mechanic
 
 ---
@@ -30,11 +27,13 @@ A first try in making a rythmic platform game in Godot
 ## ToCheck
 
 - may need to make tempo with 16th
-- make tempo global, see how to connect it to any element
+- make tempo global, see how to connect it to any element _* No, better have one tempo per song_
 - have a midi parsing and then syncing or selecting trigger events on a visual GUI
 - separate X and Y line steps for grid subdivisions
 - keyboard input for the time being, make swipe after
 - have a "1,2,3,4!" when touching an area, so that player analyzes level rythm first, later in the gamedev
+- try player that moves like blocs but on user input
+- try player movement/input in sync with tempo
 
 ---
 
