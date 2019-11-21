@@ -2,7 +2,6 @@ extends Node
 
 """
 A test scene for triggering music layers in sync with tempo
-
 - additional clic when stop tempo
 - full riff loops at measure_count 5 since counting starts with 1
 - make all buttons toggle off when stop all
