@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "CollisionShape2D",
+"class": "Geometry2D",
+"language": "GDScript",
+"path": "res://CollisionShape2D.gd"
+}, {
 "base": "Node2D",
 "class": "Grid",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Tempo.gd"
 } ]
 _global_script_class_icons={
+"Geometry2D": "",
 "Grid": "res://ui/grid.png",
 "Tempo": "res://ui/tempo.png"
 }

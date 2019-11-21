@@ -23,10 +23,10 @@ quart_sound = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="StartTempo" type="Button" parent="."]
-margin_left = 1600.0
-margin_top = 47.0
-margin_right = 1762.0
-margin_bottom = 87.0
+margin_left = 1582.0
+margin_top = 29.0
+margin_right = 1882.0
+margin_bottom = 79.0
 custom_fonts/font = SubResource( 1 )
 text = "Start Tempo"
 __meta__ = {
@@ -34,10 +34,10 @@ __meta__ = {
 }
 
 [node name="StopTempo" type="Button" parent="."]
-margin_left = 1600.0
-margin_top = 96.0
-margin_right = 1760.0
-margin_bottom = 136.0
+margin_left = 1582.0
+margin_top = 90.0
+margin_right = 1882.0
+margin_bottom = 140.0
 custom_fonts/font = SubResource( 2 )
 text = "Stop Tempo"
 __meta__ = {

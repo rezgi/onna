@@ -21,6 +21,7 @@ line_color = Color( 1, 1, 1, 0.0392157 )
 subdivision_color = Color( 1, 1, 1, 0.0784314 )
 
 [node name="Tempo" parent="." instance=ExtResource( 2 )]
+debug_bgm = false
 syncope_sound = true
 
 [node name="Bloc" parent="." instance=ExtResource( 3 )]
