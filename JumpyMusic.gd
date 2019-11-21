@@ -49,7 +49,6 @@ func _ready():
 	btn_Bass.rect_min_size = Vector2(300,50)
 
 func _on_tempo_signal(_tempo):
-	print(_tempo.measure_count)
 	if _tempo.is_full and (_tempo.measure_count - 1) % 4 == 0:
 		emit_signal("measure_start")
 
@@ -73,8 +72,8 @@ func _on_BTN_MainRiff_pressed():
 
 func _on_BTN_Beat01_pressed():
 	Beat01_toggle = !Beat01_toggle
+	yield(self, "measure_start")
 	if Beat01_toggle:
-		yield(self, "measure_start")
 		$Beat01.play()
 		btn_Beat01.text = "Stop Beat01"
 	else:
@@ -84,8 +83,8 @@ func _on_BTN_Beat01_pressed():
 
 func _on_BTN_Beat02_pressed():
 	Beat02_toggle = !Beat02_toggle
+	yield(self, "measure_start")
 	if Beat02_toggle:
-		yield(self, "measure_start")
 		$Beat02.play()
 		btn_Beat02.text = "Stop Beat02"
 	else:
@@ -95,8 +94,8 @@ func _on_BTN_Beat02_pressed():
 
 func _on_BTN_Beat03_pressed():
 	Beat03_toggle = !Beat03_toggle
+	yield(self, "measure_start")
 	if Beat03_toggle:
-		yield(self, "measure_start")
 		$Beat03.play()
 		btn_Beat03.text = "Stop Beat03"
 	else:
@@ -106,8 +105,8 @@ func _on_BTN_Beat03_pressed():
 
 func _on_BTN_Melody_pressed():
 	Melody_toggle = !Melody_toggle
+	yield(self, "measure_start")
 	if Melody_toggle:
-		yield(self, "measure_start")
 		$Melody.play()
 		btn_Melody.text = "Stop Melody"
 	else:
@@ -117,10 +116,10 @@ func _on_BTN_Melody_pressed():
 
 func _on_BTN_Bass_pressed():
 	Bass_toggle = !Bass_toggle
+	yield(self, "measure_start")
 	if Bass_toggle:
-		yield(self, "measure_start")
 		$Bass.play()
 		btn_Bass.text = "Stop Bass"
 	else:
 		$Bass.stop()
-		btn_Melody.text = "Play Bass"
+		btn_Bass.text = "Play Bass"
