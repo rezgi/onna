@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Tempo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Bloc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Grid.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
@@ -23,9 +22,3 @@ subdivision_color = Color( 1, 1, 1, 0.0784314 )
 [node name="Tempo" parent="." instance=ExtResource( 2 )]
 debug_bgm = false
 syncope_sound = true
-
-[node name="Bloc" parent="." instance=ExtResource( 3 )]
-position = Vector2( 64, 768 )
-direction = Vector2( 64, -64 )
-move_on = 1
-tween_duration = 1
