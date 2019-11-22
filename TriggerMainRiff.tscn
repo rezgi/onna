@@ -3,14 +3,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.4662, 32 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.792593, 1 )
 colors = PoolColorArray( 0.149002, 0.831282, 0.847656, 1, 1, 1, 1, 1, 1, 1, 1, 0.164706 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 2
 emission_box_extents = Vector3( 16, 1, 1 )
 flag_disable_z = true
@@ -24,9 +24,9 @@ orbit_velocity_random = 0.0
 angle = 45.0
 scale = 6.0
 scale_random = 1.0
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
-[node name="TriggerMainRiff" type="Area2D"]
+[node name="TriggerBeat01" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -35,4 +35,4 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 32
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
