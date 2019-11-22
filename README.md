@@ -14,10 +14,9 @@ A first try in making a rythmic platform game in Godot
 - make blocs movements triggered by tempo data _ *done, need refactoring_
 - make areas to reach to trigger new layers of music and level _* done_
 -
-- experiment more detailed bloc movements with animationPlayer
-- need a reach parameter
-- check how to apply tempo data to animationPlayer animation
-- make different bloc behaviours
+- experiment more detailed bloc movements with animationPlayer _* done, trick with ticking 'sync to physics' in collision parameter of KinematicBody_
+- make different bloc behaviours _* WIP_
+- check how to apply tempo data to animationPlayer animation *_ may have to be done by injecting midi data*
 -
 - try player stick to platform (move_and_slide_with_snap) _* WIP, doesn't work_
 - test game mechanic
