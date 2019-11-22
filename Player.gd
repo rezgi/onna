@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var vel := Vector2.ZERO
-const UP := Vector2.UP
-#var DOWN := Vector2.DOWN setget set_snap
+const FLOOR_NORMAL := Vector2.UP
+var snap := Vector2.DOWN  setget set_snap
 
 export var speed := 200
 export var max_speed := 800
@@ -19,17 +19,20 @@ func _physics_process(delta):
 		vel.x = 0
 	
 	if Input.is_action_just_pressed("ui_select") and is_on_floor():
+		snap = Vector2.ZERO
 		vel.y = -jump_height
+	else:
+		snap = Vector2.DOWN * 50
 	
-	if is_on_floor():
-		pass
+#	if is_on_floor():
+#		vel.y = 0
 	
 	if position.y > 4000:
 		get_tree().quit()
+		# make respawn in Position2D
 	
 	vel.x = lerp(vel.x, 0, .1)
-#	vel = move_and_slide_with_snap(vel, DOWN * 50, UP)
-	vel = move_and_slide(vel, UP)
+	vel = move_and_slide_with_snap(vel, snap, FLOOR_NORMAL)
 
-#func set_snap(new_snap):
-#	DOWN = new_snap
+func set_snap(new_snap):
+	snap = new_snap
